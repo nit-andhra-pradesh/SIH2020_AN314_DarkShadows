@@ -1,5 +1,12 @@
-# README
-**/Method**: Get = *to know server status*
+# API Endpoints for PASP
+
+**/**
+
+Method: Get
+
+Description:
+*to know server status*
+
 **/login Method**: Get = *to login into PASP*
 **/signup Method**: Get = *to signup into PASP*
 **/delete Method**: Delete =*to delete a user from PASP*
