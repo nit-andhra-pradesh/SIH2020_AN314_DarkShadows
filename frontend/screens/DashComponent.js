@@ -134,7 +134,6 @@ class DashComponent extends React.Component {
       this.setState({
         problems_data: ta4
       })
-
     }
   }
   get = async () => {
