@@ -33,7 +33,6 @@ class DashComponent extends React.Component {
   state = {
     g_antibiotics: 0,
     antibiotics_data: [],
-
     g_pathogens: 0,
     pathogens_data: [],
     g_problems: 0,
@@ -47,7 +46,19 @@ class DashComponent extends React.Component {
     u_syndromes: 0,
     loading: false,
     carousel_data: [],
-    component_loading: true
+    component_loading: true,
+    antibiotics_count: [],
+    pathogens_count: [],
+    problems_count: [],
+    syndromes_count: [],
+    u_a_c: {},
+    n_a_c: {},
+    u_path_c: {},
+    n_path_c: {},
+    u_p_c: {},
+    n_p_c: {},
+    u_s_c: {},
+    n_s_c: {},
   };
 
   async componentDidMount() {
@@ -69,6 +80,7 @@ class DashComponent extends React.Component {
     });
   }
   setData = async () => {
+    
     while (true) {
       let temp = {}, temp2 = {}
       let temp3 = {}, temp4 = {}
@@ -76,12 +88,10 @@ class DashComponent extends React.Component {
       let temp7 = {}, temp8 = {}
 
       let username = await AsyncStorage.getItem("username");
-      console.log("start")
       let ta1 = [], ta2 = [], ta3 = [], ta4 = [];
       temp["count"] = this.state.g_antibiotics;
       temp["name"] = ": National"
       temp["color"] = "rgb(0, 191, 255)"
-      console.log(this.state.u_antibiotics)
       ta1.push(temp);
       temp2["count"] = this.state.u_antibiotics;
       temp2["name"] = ": " + username
@@ -273,6 +283,27 @@ class DashComponent extends React.Component {
       .catch((error) => {
         console.error(error);
       });
+   // u_antibiotics
+   fetch("https://pasp-api.herokuapp.com/stats/mostcommon/aid", {
+    method: "GET",
+    headers: new Headers({
+      token: await AsyncStorage.getItem("otp"),
+    }),
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      this.setState({
+        antibiotics_count: json,
+      });
+      console.log("antibiotics count")
+      console.log(this.state.antibiotics_count);
+
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+    console.log("rea")
+    console.log(this.state.n_a_c)
     return 1;
   };
   // _renderItem({ item, index }) {
@@ -376,7 +407,22 @@ class DashComponent extends React.Component {
 
           </Row>
 
+          
+          <Row>
+            <Col>
+            <Card>
+              <Text>Most Commonly used Antibiotic</Text>
+        <Text > {this.state.n_a_c[0]}</Text>
+            </Card>
+            </Col>
 
+            <Col>
+            <Card>
+              <Text>Most Commonly used Antibiotic by you</Text>
+        <Text > {this.state.u_a_c[0]}</Text>
+            </Card>
+            </Col>
+          </Row>
 
 
       </View>
@@ -449,5 +495,28 @@ export default DashComponent
 
 
 
+// let with_ = this.state.antibiotics_count["with"];
+// let without_ = this.state.antibiotics_count["without"]
+// let max_a = with_[0][0];
+// let ans0
+// for(let i=1; i<with_.length; i++){
+//   if (max_a < with_[i][0])
+//   max_a = with_[i][0]
+//   ans0 = with_[i]  
 
+// }
+// this.setState({
+//   u_a_c: ans0
+// })
+// let ans
+// let max_a_n = without_[0][0];
+// for(let i=1; i<without_.length; i++){
+//   if (max_a_n < without_[i][0]) {
+//   max_a_n = without_[i][0]
+// ans = without_[i]  
+// }
+// }
+// this.setState({
+//   n_a_c: ans
+// })
 
