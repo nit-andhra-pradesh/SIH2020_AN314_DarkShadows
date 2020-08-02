@@ -9,7 +9,7 @@ export default function ChatScreen() {
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
  
-      <Text style={styles.tabBarInfoText}>Chat</Text>
+      <Text style={styles.tabBarInfoText}>Frequently asked questions</Text>
  
       </ScrollView>
 
@@ -97,6 +97,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: 'rgba(96,100,109, 1)',
     textAlign: 'center',
+    fontFamily: 'open-sans-bold',
+    margin: 10
   },
   navigationFilename: {
     marginTop: 5,
