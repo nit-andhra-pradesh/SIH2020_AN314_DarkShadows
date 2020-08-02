@@ -6,55 +6,89 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Searchnavigator from "./Searchnavigator";
 import Newsnavigator from "./Newsnavigator";
 import Card from "../components/card";
+import { LinearGradient } from 'expo-linear-gradient';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 function HomeScreen({ navigation }) {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#424242",
-      }}
-    >
-      <View
-        style={{
-          width: Math.round(Dimensions.get("window").width) - 50,
-          paddingVertical: 10,
-        }}
-      >
-        <TouchableOpacity
-          style={styles.loginBtn}
-          onPress={() => navigation.navigate("News")}
+    <View style={{ flex: 1 }}>
+      <LinearGradient style={{ flex: 1 }} colors={['#c3fdff', '#0083B0']}>
+
+        <View
+          style={{
+
+            alignItems: "center",
+            justifyContent: "center",
+
+          }}
         >
           <View
             style={{
-              flex: 1,
-              justifyContent: "center",
+
+              paddingVertical: 10,
               alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <Text style={{ color: "black" }}>News</Text>
+            <TouchableOpacity
+              style={styles.loginBtn}
+              onPress={() => navigation.navigate("News")}
+            >
+              <LinearGradient
+                // Button Linear Gradient
+
+                colors={['#4c669f', '#3b5998', '#192f6a']}
+                style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
+                <View style={{ flexDirection: 'row' }}>
+                  <FontAwesome name="newspaper-o" size={32} color="white" />
+                  <Text
+                    style={{
+                      backgroundColor: 'transparent',
+                      fontSize: 25,
+                      marginLeft: 8,
+                      color: '#fff',
+                    }}>
+                    News
+          </Text>
+                </View>
+              </LinearGradient>
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          width: Math.round(Dimensions.get("window").width) - 50,
-          paddingVertical: 10,
-        }}
-      >
-        <TouchableOpacity
-          style={styles.loginBtn}
-          onPress={() => navigation.navigate("Search")}
-        >
           <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+            style={{
+
+              paddingVertical: 10,
+            }}
           >
-            <Text style={{ color: "black" }}>Search</Text>
+            <TouchableOpacity
+              style={styles.loginBtn}
+              onPress={() => navigation.navigate(" ")}
+            >
+              <LinearGradient
+                // Button Linear Gradient
+                style={{ width: 80 }}
+                colors={['#4c669f', '#3b5998', '#192f6a']}
+                style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
+                <View style={{ flexDirection: 'row' }}>
+                  <FontAwesome5 name="tablets" size={32} color="white" />
+                  <Text
+                    style={{
+                      margin: 5,
+                      backgroundColor: 'transparent',
+                      fontSize: 25,
+                      color: '#fff',
+                    }}>
+                    Antibiotics
+          </Text>
+                </View>
+              </LinearGradient>
+
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
-      </View>
+
+        </View>
+      </LinearGradient>
     </View>
   );
 }

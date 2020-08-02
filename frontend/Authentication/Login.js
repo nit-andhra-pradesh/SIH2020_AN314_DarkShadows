@@ -11,6 +11,8 @@ import {
   AsyncStorage,
   Alert,
 } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 import Card from "../components/card";
 export default class Login extends React.Component {
@@ -101,79 +103,94 @@ export default class Login extends React.Component {
       <View
         style={{ flex: 1, alignItems: "center", backgroundColor: "#242424" }}
       >
-        <View
-          style={{
-            flex: 0.5,
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: 100,
-          }}
-        >
-          <ImageBackground
-            source={require("../assets/images/splash.png")}
-            style={styles.backgroundImage}
-          ></ImageBackground>
-        </View>
-        <Card style={styles.authContainer}>
-          <ScrollView>
-            <View style={styles.inputView}>
-              <TextInput
-                style={styles.inputText}
-                placeholder="User Name"
-                placeholderTextColor="#003f5c"
-                onChangeText={(text) => this.setState({ username: text })}
-              />
-            </View>
-            <View style={styles.inputView}>
-              <TextInput
-                secureTextEntry
-                style={styles.inputText}
-                placeholder="Password"
-                placeholderTextColor="#003f5c"
-                onChangeText={(text) => this.setState({ password: text })}
-              />
-            </View>
-            <View style={styles.inputView}>
-              <TextInput
-                secureTextEntry
-                style={styles.inputText}
-                placeholder="PIN (Forgot no problem, just login)"
-                placeholderTextColor="#003f5c"
-                onChangeText={(text) => this.setState({ otp: text })}
-              />
-            </View>
+        <LinearGradient style={{ flex: 1 }} colors={['#c3fdff', '#0083B0']}>
+          <View
+            style={{
+              flex: 0.5,
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: 100,
+            }}
+          >
+            <ImageBackground
+              source={require("../assets/images/splash.png")}
+              style={styles.backgroundImage}
+            ></ImageBackground>
+          </View>
+          <Card style={styles.authContainer}>
+            <ScrollView>
+              <View style={styles.inputView}>
+                <TextInput
+                  style={styles.inputText}
+                  placeholder="User Name"
+                  placeholderTextColor="#003f5c"
+                  onChangeText={(text) => this.setState({ username: text })}
+                />
+              </View>
+              <View style={styles.inputView}>
+                <TextInput
+                  secureTextEntry
+                  style={styles.inputText}
+                  placeholder="Password"
+                  placeholderTextColor="#003f5c"
+                  onChangeText={(text) => this.setState({ password: text })}
+                />
+              </View>
+              <View style={styles.inputView}>
+                <TextInput
+                  secureTextEntry
+                  style={styles.inputText}
+                  placeholder="PIN (Forgot no problem, just login)"
+                  placeholderTextColor="#003f5c"
+                  onChangeText={(text) => this.setState({ otp: text })}
+                />
+              </View>
 
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Forgot")}
-            >
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("Forgot")}
               >
-                <Text style={{ color: "white" }}>Forgot Password?</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.loginBtn} onPress={this.login}>
-              <Text style={{ color: "black", fontSize: 20 }}>Login</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Signup")}
-            >
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text style={{ color: "black", fontFamily: "open-sans-bold" }}>Forgot Password?</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.loginBtn} onPress={this.login}>
+                <View style={{ margin: 15 }}>
+                  <LinearGradient
+                    // Button Linear Gradient
+
+                    colors={['#4c669f', '#3b5998', '#192f6a']}
+                    style={{ borderRadius: 5 }}>
+                    <View style={{ flexDirection: 'row' }}>
+
+                      <Text
+                        style={{
+                          backgroundColor: 'transparent',
+                          fontSize: 20,
+                          margin: 10,
+                          color: '#fff',
+                        }}>
+                        LOGIN
+          </Text>
+                    </View>
+                  </LinearGradient>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("Signup")}
               >
-                <Text style={{ color: "white" }}>Register</Text>
-              </View>
-            </TouchableOpacity>
-          </ScrollView>
-        </Card>
+
+
+
+              </TouchableOpacity>
+            </ScrollView>
+          </Card>
+        </LinearGradient>
       </View>
     );
   }
@@ -189,7 +206,8 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     maxHeight: 400,
     padding: 20,
-    backgroundColor: "#424242",
+    margin: 15,
+    backgroundColor: "lightblue",
   },
   inputView: {
     width: "100%",
@@ -210,7 +228,7 @@ const styles = StyleSheet.create({
   },
   loginBtn: {
     width: "100%",
-    backgroundColor: "#d1d1d1",
+
     borderRadius: 5,
     height: 50,
     alignItems: "center",

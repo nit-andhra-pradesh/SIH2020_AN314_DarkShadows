@@ -4,6 +4,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { Card, Icon } from "react-native-elements";
 import { Button, TouchableOpacity, StyleSheet } from "react-native";
 import * as WebBrowser from "expo-web-browser";
+import card from "../components/card"
 
 class News extends React.Component {
   state = {
@@ -51,7 +52,7 @@ class News extends React.Component {
       );
     }
     return (
-      <View style={{ paddingTop: 30, backgroundColor: "#424242" }}>
+      <View style={{ paddingTop: 30, backgroundColor: "light" }}>
         <FlatList
           data={this.state.jsonData}
           keyExtractor={(item, index) => index.toString()}

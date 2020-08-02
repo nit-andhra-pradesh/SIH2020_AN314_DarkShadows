@@ -1,18 +1,27 @@
 import * as React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
 export default function ChatScreen() {
   return (
-    <View style={styles.container}>
-      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
- 
-      <Text style={styles.tabBarInfoText}>Frequently asked questions</Text>
- 
-      </ScrollView>
+    <View style={{ flex: 1 }}>
+      <LinearGradient style={{ flex: 1 }} colors={['#c3fdff', '#0083B0']}>
 
+
+        <View style={styles.container}>
+
+
+          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+
+            <Text style={styles.tabBarInfoText}>Frequently asked questions</Text>
+          </ScrollView>
+
+
+        </View>
+      </LinearGradient>
 
     </View>);
 }
@@ -27,8 +36,9 @@ ChatScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+
+
+
   },
   developmentModeText: {
     marginBottom: 20,
@@ -95,7 +105,7 @@ const styles = StyleSheet.create({
   },
   tabBarInfoText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+    color: 'black',
     textAlign: 'center',
     fontFamily: 'open-sans-bold',
     margin: 10

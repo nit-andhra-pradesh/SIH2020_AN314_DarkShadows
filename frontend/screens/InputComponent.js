@@ -1,11 +1,15 @@
 import * as React from "react";
 import NumericInput from "react-native-numeric-input";
-import { Text, View, StyleSheet, Dimensions, AsyncStorage, Alert, ActivityIndicator } from "react-native";
+import { Text, View, StyleSheet, Dimensions, AsyncStorage, Alert, ActivityIndicator, TouchableOpacity } from "react-native";
 import { Dropdown } from "react-native-material-dropdown";
 import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Card from "../components/card";
+import { LinearGradient } from 'expo-linear-gradient';
+import { Entypo } from '@expo/vector-icons';
 let t = []; //array of objects for dropdown
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 class InputComponent extends React.Component {
   state = {
@@ -16,7 +20,7 @@ class InputComponent extends React.Component {
     data: "", //fetched data
     v: "", //storing names of antibiotics
     aid: -1,
-    loading:false
+    loading: false
 
   };
 
@@ -164,78 +168,103 @@ class InputComponent extends React.Component {
     }
     return (
 
-      <View>
-        <Card style={({ elevation: 0 }, styles.dropdown)}>
-          <View style={styles.dropdown}>
-            <Dropdown
-              label="Antibiotic"
-              disabledItemColor="#000000"
-              baseColor="#000000"
-              dropdownPosition="0"
-              data={t}
-              onChangeText={(t) => this.getAntibiotic(t)}
-            />
-          </View>
-        </Card>
-        <Card style={({ elevation: 0 }, styles.card)}>
-          <View style={styles.input}>
-            <Text>DOSAGE AMOUNT :</Text>
-            <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-              <Text>{this.state.dosage} mg</Text>
+
+
+      <View style={{ flex: 1, height: height }}>
+        <LinearGradient style={{ flex: 1 }} colors={['#c3fdff', '#0083B0']}>
+          <Card style={({ elevation: 0 }, styles.dropdown)}>
+            <View style={styles.dropdown}>
+              <Dropdown
+                label="Antibiotic"
+                disabledItemColor="#000000"
+                baseColor="#000000"
+                dropdownPosition="0"
+                data={t}
+                onChangeText={(t) => this.getAntibiotic(t)}
+              />
             </View>
+          </Card>
+          <Card style={({ elevation: 0 }, styles.card)}>
+            <View style={styles.input}>
+              <Text>DOSAGE AMOUNT :</Text>
+              <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+                <Text>{this.state.dosage} mg</Text>
+              </View>
 
-            <NumericInput
-              value={this.state.dosage}
-              onChange={(dosage) => this.setState({ dosage })}
-              onLimitReached={(isMax, msg) => console.log(isMax, msg)}
-              totalWidth={Dimensions.get("window").width - 40}
-              totalHeight={50}
-              rounded
-              iconSize={15}
-              step={25}
-              valueType="real"
-              textColor="#000000"
-              iconStyle={{ color: "white" }}
-              rightButtonBackgroundColor="#90caf9"
-              leftButtonBackgroundColor="#ee98fb"
-              minValue={0}
-            />
-          </View>
-        </Card>
-        <Card style={styles.card}>
-          <View style={styles.input}>
-            <Text>Dosage duration</Text>
-            <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-              <Text>{this.state.duration} days</Text>
+              <NumericInput
+                value={this.state.dosage}
+                onChange={(dosage) => this.setState({ dosage })}
+                onLimitReached={(isMax, msg) => console.log(isMax, msg)}
+                totalWidth={Dimensions.get("window").width - 40}
+                totalHeight={50}
+                rounded
+                iconSize={15}
+                step={25}
+                valueType="real"
+                textColor="#000000"
+                iconStyle={{ color: "white" }}
+                rightButtonBackgroundColor="#90caf9"
+                leftButtonBackgroundColor="#ee98fb"
+                minValue={0}
+              />
             </View>
+          </Card>
+          <Card style={styles.card}>
+            <View style={styles.input}>
+              <Text>Dosage duration</Text>
+              <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+                <Text>{this.state.duration} days</Text>
+              </View>
 
-            <NumericInput
-              value={this.state.duration}
-              onChange={(duration) => this.setState({ duration })}
-              onLimitReached={(isMax, msg) => console.log(isMax, msg)}
-              totalWidth={Dimensions.get("window").width - 40}
-              totalHeight={50}
-              rounded
-              iconSize={15}
-              step={1}
-              valueType="real"
-              textColor="#000000"
-              iconStyle={{ color: "black" }}
-              rightButtonBackgroundColor="#90caf9"
-              leftButtonBackgroundColor="#ee98fb"
-              minValue={0}
-            />
-          </View>
-        </Card>
+              <NumericInput
+                value={this.state.duration}
+                onChange={(duration) => this.setState({ duration })}
+                onLimitReached={(isMax, msg) => console.log(isMax, msg)}
+                totalWidth={Dimensions.get("window").width - 40}
+                totalHeight={50}
+                rounded
+                iconSize={15}
+                step={1}
+                valueType="real"
+                textColor="#000000"
+                iconStyle={{ color: "black" }}
+                rightButtonBackgroundColor="#90caf9"
+                leftButtonBackgroundColor="#ee98fb"
+                minValue={0}
+              />
 
-        <Button
-          buttonStyle={styles.add}
-          icon={<Icon name="check" size={30} color="white" />}
-          iconLeft
-          title="Add"
-          onPress={this.add}
-        />
+            </View>
+          </Card>
+          <TouchableOpacity
+            style={styles.loginBtn}
+            onPress={this.add}
+          >
+
+            <View style={{ margin: 15 }}>
+              <LinearGradient
+                // Button Linear Gradient
+
+                colors={['#4c669f', '#3b5998', '#192f6a']}
+                style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
+                <View style={{ flexDirection: 'row' }}>
+                  <Entypo name="add-to-list" size={32} color="white" />
+                  <Text
+                    style={{
+                      backgroundColor: 'transparent',
+                      fontSize: 25,
+                      marginLeft: 8,
+                      color: '#fff',
+                    }}>
+                    Add
+          </Text>
+                </View>
+              </LinearGradient>
+            </View>
+          </TouchableOpacity>
+
+        </LinearGradient>
       </View>
+
     );
   }
 }
@@ -247,6 +276,7 @@ const styles = StyleSheet.create({
   input: {
     alignItems: "center",
     margin: 30,
+
     fontFamily: "open-sans-bold",
   },
   dropdown: {

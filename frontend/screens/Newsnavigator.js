@@ -1,17 +1,17 @@
 import React from 'react';
-import News from './News'
+import News2 from './News2'
 
 const Newsnavigator = props => {
 
-        return (
-            <News/>
-        )
-        };
-      
-        
+    return (
+        <News2 />
+    )
+};
 
 
 
 
-    
+
+
+
 export default Newsnavigator;
