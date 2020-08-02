@@ -80,7 +80,6 @@ class DashComponent extends React.Component {
     });
   }
   setData = async () => {
-
     while (true) {
       let temp = {}, temp2 = {}
       let temp3 = {}, temp4 = {}
