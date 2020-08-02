@@ -80,7 +80,6 @@ class DashComponent extends React.Component {
     });
   }
   setData = async () => {
-    
     while (true) {
       let temp = {}, temp2 = {}
       let temp3 = {}, temp4 = {}
@@ -283,25 +282,32 @@ class DashComponent extends React.Component {
       .catch((error) => {
         console.error(error);
       });
-   // u_antibiotics
-   fetch("https://pasp-api.herokuapp.com/stats/mostcommon/aid", {
-    method: "GET",
-    headers: new Headers({
-      token: await AsyncStorage.getItem("otp"),
-    }),
-  })
-    .then((response) => response.json())
-    .then((json) => {
-      this.setState({
-        antibiotics_count: json,
-      });
-      console.log("antibiotics count")
-      console.log(this.state.antibiotics_count);
-
+    // u_antibiotics
+    fetch("https://pasp-api.herokuapp.com/stats/mostcommon/aid", {
+      method: "GET",
+      headers: new Headers({
+        token: await AsyncStorage.getItem("otp"),
+      }),
     })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          antibiotics_count: json,
+        });
+        console.log("antibiotics count")
+        console.log(this.state.antibiotics_count);
+        this.setState({
+          u_a_c: this.state.antibiotics_count["with"]
+        })
+        console.log(this.state.u_a_c)
+        this.setState({
+          n_a_c: this.state.antibiotics_count["without"]
+        })
+        console.log(this.state.n_a_c)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     console.log("rea")
     console.log(this.state.n_a_c)
     return 1;
@@ -333,12 +339,12 @@ class DashComponent extends React.Component {
       <View style={{ paddingTop: 10 }}>
 
         <Text style={styles.headings}> User data / National Data </Text>
-          <Row>
+        <Row>
 
-            <ScrollView
-              horizontal={true}
-            >
-                      <Card style={{margin: 10, overflow: 'hidden'}}>
+          <ScrollView
+            horizontal={true}
+          >
+            <Card style={{ margin: 10, overflow: 'hidden' }}>
 
               <Text style={styles.headings}> Antibiotics:  </Text>
               <PieChart
@@ -351,8 +357,8 @@ class DashComponent extends React.Component {
                 paddingLeft="15"
                 absolute
               />
-              </Card>
-              <Card style={{margin: 10, overflow: 'hidden'}}>
+            </Card>
+            <Card style={{ margin: 10, overflow: 'hidden' }}>
 
               <Text style={styles.headings}>Syndromes</Text>
               <PieChart
@@ -365,8 +371,8 @@ class DashComponent extends React.Component {
                 paddingLeft="15"
                 absolute
               />
-              </Card>
-              <Card style={{margin: 10, overflow: 'hidden'}}>
+            </Card>
+            <Card style={{ margin: 10, overflow: 'hidden' }}>
 
               <Text style={styles.headings}>Pathogens</Text>
               <PieChart
@@ -379,8 +385,8 @@ class DashComponent extends React.Component {
                 paddingLeft="15"
                 absolute
               />
-              </Card>
-              <Card style={{margin: 10, overflow: 'hidden'}}>
+            </Card>
+            <Card style={{ margin: 10, overflow: 'hidden' }}>
 
               <Text style={styles.headings}>Problems</Text>
               <PieChart
@@ -393,10 +399,10 @@ class DashComponent extends React.Component {
                 paddingLeft="15"
                 absolute
               />
-              </Card>
-            </ScrollView>
+            </Card>
+          </ScrollView>
 
-            {/* <Carousel
+          {/* <Carousel
             ref={(c) => { this._carousel = c; }}
             data={this.state.carousel_data}
             renderItem={this._renderItem}
@@ -405,24 +411,37 @@ class DashComponent extends React.Component {
           /> */}
 
 
-          </Row>
+        </Row>
 
-          
-          <Row>
+
+        <Row >
+          <View style={{ flexDirection: 'row', fontFamily: 'open-sans-bold'}}>
             <Col>
-            <Card>
-              <Text>Most Commonly used Antibiotic</Text>
-        <Text > {this.state.n_a_c[0]}</Text>
-            </Card>
+              <Card style={{ margin: 2, width: width / 2 - 10, height: 100, padding: 2, backgroundColor: 'pink' }}>
+                <View style={{ textAlign: 'center', alignItems: 'center', justifyContent: 'center' }}>
+                  <Text>Most Commonly used </Text> 
+                  <Text> Antibiotic</Text>
+                  <Text style={{fontSize: 20}}> {this.state.n_a_c[1]}</Text>
+                  <Text style={{fontSize: 25}}>{this.state.n_a_c[0]}</Text>
+                </View>
+
+              </Card>
+
             </Col>
 
-            <Col>
-            <Card>
-              <Text>Most Commonly used Antibiotic by you</Text>
-        <Text > {this.state.u_a_c[0]}</Text>
-            </Card>
+
+            <Col >
+              <Card style={{ margin: 2, width: width / 2, height: 100, padding: 2, backgroundColor: 'lightgreen' }}>
+                <View style={{ textAlign: 'center', alignItems: 'center' }}>
+                  <Text>Most Commonly used</Text>
+                  <Text>Antibiotic by you</Text>
+                  <Text style={{fontSize: 20}}> {this.state.u_a_c[1]}</Text>
+                  <Text style={{fontSize: 25}}>{this.state.u_a_c[0]}</Text>
+                </View>
+              </Card>
             </Col>
-          </Row>
+          </View>
+        </Row>
 
 
       </View>
