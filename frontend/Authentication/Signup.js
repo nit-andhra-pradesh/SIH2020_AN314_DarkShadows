@@ -6,6 +6,8 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Card from '../components/card';
+console.disableYellowBox = true;
+
 export default class Signup extends React.Component {
   state = {
     email: "",

@@ -5,6 +5,8 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Card from '../components/card';
 import { Entypo } from '@expo/vector-icons';
+console.disableYellowBox = true;
+
 export default class Forgot extends React.Component {
   state = {
     email: "",
