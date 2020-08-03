@@ -1,11 +1,10 @@
 """ PASP enpoints defined using Flask """
-
 from flask import request, jsonify, Response
 import json
 from flask_mail import Message
 
 from utils import otp, present_date, executeSQL, validate, dumpDB, deleteDB, \
-    numberOf, maximumCount, minimumCount, numberOfEach, getFactor
+    numberOf, maximumCount, minimumCount, numberOfEach, getFactor, countof, mostcommon, drugstaken
 from initializer import pasp, mail, cache
 
 
@@ -331,6 +330,90 @@ def getF(factor):
             resp = Response(response=json.dumps(info), status=200)
     return resp
 
+
+@pasp.route('/gstats/countof/<factor>')
+@cache.cached(timeout=60)
+def scountof(factor):
+    token = request.headers["token"]
+    data = validate(token)
+    if token is None or data is None:
+        resp = Response(response='Bad Request', status=400)
+    else:
+        info = countof(factor, None)
+        if info == "Failure":
+            resp = Response(response=json.dumps(info), status=404)
+        else:
+            resp = Response(response=json.dumps(info), status=200)
+    return resp
+
+@pasp.route('/stats/countof/<factor>')
+@cache.cached(timeout=60)
+def gcountof(factor):
+    token = request.headers["token"]
+    data = validate(token)
+    uid = data[0]
+    if token is None or data is None:
+        resp = Response(response='Bad Request', status=400)
+    else:
+        info = countof(factor, uid)
+        if info == "Failure":
+            resp = Response(response=json.dumps(info), status=404)
+        else:
+            resp = Response(response=json.dumps(info), status=200)
+    return resp
+
+@pasp.route('/stats/mostcommon/<factor>')
+@cache.cached(timeout=60)
+def mostcommonr(factor):
+    token = request.headers["token"]
+    data = validate(token)
+    uid = data[0]
+    if token is None or data is None:
+        resp = Response(response='Bad Request', status=400)
+    else:
+        info_with_uid = mostcommon(factor, uid)
+        print("info")
+        print(info_with_uid)
+        maximum = info_with_uid[0][0] # 1
+        maximum_value = info_with_uid[0]
+        for i in range(len(info_with_uid)):
+            if maximum < info_with_uid[i][0]:
+                maximum = info_with_uid[i][0]
+                maximum_value = info_with_uid[i]
+        info_with_uid = maximum_value
+        info_without_uid = mostcommon(factor, None)
+        maximum = info_without_uid[0][0]
+        maximum_value = info_without_uid[0]
+        for i in range(len(info_without_uid)):
+            if maximum < info_without_uid[i][0]:
+                maximum = info_without_uid[i][0]
+                maximum_value = info_without_uid[i]
+        info_without_uid = maximum_value
+        res = {}
+        res["with"] = info_with_uid
+        res["without"] = info_without_uid
+        if info_with_uid == "Failure" or info_without_uid == "Failure":
+            resp = Response(response=json.dumps(info_with_uid), status=404)
+        else:
+            resp = Response(response=json.dumps(res), status=200)
+    return resp
+
+
+@pasp.route('/stats/drugstaken')
+@cache.cached(timeout=60)
+def drugstakenapi(factor):
+    token = request.headers["token"]
+    data = validate(token)
+    uid = data[0]
+    if token is None or data is None:
+        resp = Response(response='Bad Request', status=400)
+    else:
+        info = drugstaken(factor, uid)
+        if info == "Failure":
+            resp = Response(response=json.dumps(info), status=404)
+        else:
+            resp = Response(response=json.dumps(info), status=200)
+    return resp
 
 if __name__ == '__main__':
     pasp.run(threaded=True)
