@@ -12,7 +12,7 @@ import {
   Alert,
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-
+console.disableYellowBox = true;
 
 import Card from "../components/card";
 export default class Login extends React.Component {

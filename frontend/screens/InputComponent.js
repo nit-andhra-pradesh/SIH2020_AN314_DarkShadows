@@ -7,6 +7,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import Card from "../components/card";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Entypo } from '@expo/vector-icons';
+console.disableYellowBox = true;
 let t = []; //array of objects for dropdown
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;

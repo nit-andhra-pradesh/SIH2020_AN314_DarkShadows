@@ -2,7 +2,7 @@ import * as React from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import InputComponent from "./InputComponent";
-
+console.disableYellowBox = true;
 export default function InputScreen() {
   return (
     <View style={styles.container}>

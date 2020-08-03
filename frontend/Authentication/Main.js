@@ -8,6 +8,7 @@ import InfoScreen from "../screens/InfoScreen";
 import InputScreen from "../screens/InputScreen";
 import Settings from "../screens/Settings";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+console.disableYellowBox = true;
 
 const BottomTab = createMaterialBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";

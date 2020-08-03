@@ -5,7 +5,7 @@ import { Card, Icon } from "react-native-elements";
 import { Button, TouchableOpacity, StyleSheet } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import card from "../components/card"
-
+console.disableYellowBox = true;
 class News extends React.Component {
   state = {
     jsonData: [],

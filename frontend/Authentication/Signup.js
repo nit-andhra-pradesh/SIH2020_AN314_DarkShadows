@@ -2,6 +2,7 @@ import  React from 'react';
 import  { StyleSheet,Text, View, TextInput, TouchableOpacity,ScrollView,ImageBackground, ActivityIndicator, Alert} from 'react-native';
 
 import  Card from '../components/card';
+console.disableYellowBox = true;
 export  default class Signup extends React.Component {
   state={
     email:"",

@@ -6,7 +6,7 @@ import { Button, StyleSheet } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import { Row, Col } from 'react-native-responsive-grid-system';
 import { LinearGradient } from 'expo-linear-gradient';
-
+console.disableYellowBox = true;
 import {
   LineChart,
   BarChart,

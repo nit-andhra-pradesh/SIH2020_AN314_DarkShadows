@@ -6,7 +6,7 @@ import Signup from "./Signup";
 import Login from "./Login";
 import Forgot from "./Forgot";
 import Main from "./Main";
-
+console.disableYellowBox = true;
 const Navigator = createStackNavigator(
   {
     Home: Login,
