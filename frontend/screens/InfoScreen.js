@@ -10,6 +10,21 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
+let ok = false;
+
+const list = [
+  {
+    id: 1,
+    title: 'How many times a day should a adult take amoxicillinWhat should I avoid while taking Augmentin?',
+    body: 'Amoxicillin is usually taken three times a day, but may be given twice a dayAmoxicillin is usually taken three times a day, ',
+  },
+  {
+    id: 2,
+    title: '"What should I avoid while taking Augmentin?"',
+    body: '"Avoid taking this medicine together with or just after eating a high-fat meal. This will make it harder for your body to absorb the medication. "'
+  }
+]
+
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
@@ -63,7 +78,7 @@ function HomeScreen({ navigation }) {
           >
             <TouchableOpacity
               style={styles.loginBtn}
-              onPress={() => navigation.navigate(" ")}
+              onPress={() => navigation.navigate("Antibiotics")}
             >
               <LinearGradient
                 // Button Linear Gradient
@@ -81,6 +96,8 @@ function HomeScreen({ navigation }) {
                     }}>
                     Antibiotics
           </Text>
+
+
                 </View>
               </LinearGradient>
 
@@ -100,7 +117,7 @@ function InfoScreen() {
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Info Spectrum" component={HomeScreen} />
       <Stack.Screen name="News" component={Newsnavigator} />
-      <Stack.Screen name="Search" component={Searchnavigator} />
+      <Stack.Screen name="Antibiotics" component={Searchnavigator} />
     </Stack.Navigator>
   );
 }

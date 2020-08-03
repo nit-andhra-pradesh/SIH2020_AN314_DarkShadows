@@ -1,14 +1,14 @@
 import React from 'react';
-import Search from '../models/Search'
+import Antibiotics from '../models/Antibiotics';
 
-  
+
 
 const Newsnavigator = props => {
 
-        return (
-            <Search/>
-        )
-        };
-        
-    
+    return (
+        <Antibiotics />
+    )
+};
+
+
 export default Newsnavigator;

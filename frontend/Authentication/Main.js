@@ -7,6 +7,7 @@ import ChatScreen from "../screens/ChatScreen";
 import InfoScreen from "../screens/InfoScreen";
 import InputScreen from "../screens/InputScreen";
 import Settings from "../screens/Settings";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const BottomTab = createMaterialBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
@@ -38,9 +39,9 @@ export default class Main extends React.Component {
             name="Chat"
             component={ChatScreen}
             options={{
-              title: "Chat",
+              title: "Faqs",
               tabBarIcon: ({ color }) => (
-                <AntDesign name="wechat" color={color} size={24} />
+                <MaterialCommunityIcons name="frequently-asked-questions" size={24} color="white" />
               ),
             }}
           />
