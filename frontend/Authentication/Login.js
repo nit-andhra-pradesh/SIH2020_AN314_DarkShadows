@@ -12,7 +12,8 @@ import {
   Alert,
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Card from "../components/card";
 export default class Login extends React.Component {
@@ -112,29 +113,40 @@ export default class Login extends React.Component {
               marginTop: 100,
             }}
           >
+
             <ImageBackground
-              source={require("../assets/images/splash.png")}
+              source={require("../assets/images/logo.png")}
               style={styles.backgroundImage}
             ></ImageBackground>
+
           </View>
+
+
           <Card style={styles.authContainer}>
+
             <ScrollView>
               <View style={styles.inputView}>
-                <TextInput
-                  style={styles.inputText}
-                  placeholder="User Name"
-                  placeholderTextColor="#003f5c"
-                  onChangeText={(text) => this.setState({ username: text })}
-                />
+                <View style={{ flexDirection: 'row' }}>
+                  <AntDesign style={{ marginRight: 10, marginTop: 10 }} name="user" size={24} color="black" />
+                  <TextInput
+                    style={styles.inputText}
+                    placeholder="User Name ."
+                    placeholderTextColor="#003f5c"
+                    onChangeText={(text) => this.setState({ username: text })}
+                  />
+                </View>
               </View>
               <View style={styles.inputView}>
-                <TextInput
-                  secureTextEntry
-                  style={styles.inputText}
-                  placeholder="Password"
-                  placeholderTextColor="#003f5c"
-                  onChangeText={(text) => this.setState({ password: text })}
-                />
+                <View style={{ flexDirection: 'row' }}>
+                  <MaterialCommunityIcons style={{ marginRight: 10, marginTop: 10 }} name="textbox-password" size={24} color="black" />
+                  <TextInput
+                    secureTextEntry
+                    style={styles.inputText}
+                    placeholder="Password"
+                    placeholderTextColor="#003f5c"
+                    onChangeText={(text) => this.setState({ password: text })}
+                  />
+                </View>
               </View>
               <View style={styles.inputView}>
                 <TextInput
@@ -156,9 +168,25 @@ export default class Login extends React.Component {
                     alignItems: "center",
                   }}
                 >
-                  <Text style={{ color: "black", fontFamily: "open-sans-bold" }}>Forgot Password?</Text>
+                  <Text style={{ color: "black", fontFamily: "open-sans-bold" }}>  >>> Forgot Password?</Text>
                 </View>
               </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("Signup")}
+              >
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text style={{ color: "black", fontFamily: "open-sans-bold" }}> >>> Register</Text>
+                </View>
+              </TouchableOpacity>
+
+
               <TouchableOpacity style={styles.loginBtn} onPress={this.login}>
                 <View style={{ margin: 15 }}>
                   <LinearGradient
@@ -200,6 +228,15 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
+  authContainer1: {
+    alignContent: "center",
+    width: "90%",
+    maxWidth: 150,
+    maxHeight: 150,
+    padding: 5,
+    margin: 5,
+    backgroundColor: "lightblue",
+  },
   authContainer: {
     alignContent: "center",
     width: "90%",
@@ -211,16 +248,18 @@ const styles = StyleSheet.create({
   },
   inputView: {
     width: "100%",
+
     backgroundColor: "white",
     borderRadius: 10,
     height: 50,
     marginBottom: 20,
     justifyContent: "center",
-    padding: 20,
+    padding: 10,
   },
   inputText: {
     height: 50,
     color: "black",
+    fontFamily: 'open-sans'
   },
   forgot: {
     color: "white",
@@ -243,8 +282,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#424242",
   },
   backgroundImage: {
-    width: 200,
-    height: 200,
+    width: 130,
+    height: 130,
     paddingVertical: 100,
+    borderRadius: 25
   },
 });
