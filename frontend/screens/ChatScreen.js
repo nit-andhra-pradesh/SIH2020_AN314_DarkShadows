@@ -275,7 +275,11 @@ export default function ChatScreen() {
 }
 
 ChatScreen.navigationOptions = {
-  header: null,
+   title: 'FAQ',
+    headerShown: true,
+   headerStyle: {
+     backgroundColor: ' white',
+   },
 };
 
 
