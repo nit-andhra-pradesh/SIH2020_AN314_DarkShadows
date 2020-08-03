@@ -236,7 +236,7 @@ function roast(item) {
 
 
 
-export default function ChatScreen() {
+export default function Antibiotics() {
 
 
   return (
@@ -248,9 +248,7 @@ export default function ChatScreen() {
 
         <View style={styles.container}>
 
-          <LinearGradient style={{ marginLeft: 100, width: 150, height: 30, borderRadius: 20 }} colors={['#0F2027', '#203A43', '#2C5364']}>
-            <Text style={{ paddingLeft: 15, justifyContent: 'center', alignItems: 'center', fontFamily: 'open-sans-bold', color: 'white' }}>FAQ'S section</Text>
-          </LinearGradient>
+
           <ScrollView style={styles.container1} contentContainerStyle={styles.contentContainer}>
 
             <AccordionList
@@ -274,7 +272,7 @@ export default function ChatScreen() {
     </View >);
 }
 
-ChatScreen.navigationOptions = {
+Antibiotics.navigationOptions = {
   header: null,
 };
 

@@ -5,6 +5,8 @@ import { Icon } from 'react-native-elements';
 import { Button, StyleSheet } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import { Row, Col } from 'react-native-responsive-grid-system';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import {
   LineChart,
   BarChart,
@@ -91,10 +93,13 @@ class DashComponent extends React.Component {
       temp["count"] = this.state.g_antibiotics;
       temp["name"] = ": National"
       temp["color"] = "rgb(0, 191, 255)"
+      temp["legendFontColor"] = "#FFFFFF"
       ta1.push(temp);
       temp2["count"] = this.state.u_antibiotics;
       temp2["name"] = ": " + username
       temp2["color"] = "rgb(199, 3, 18)"
+      temp2["legendFontColor"] = "#FFFFFF"
+
       ta1.push(temp2)
       this.setState({
         antibiotics_data: ta1
@@ -102,10 +107,14 @@ class DashComponent extends React.Component {
       temp3["count"] = this.state.g_syndromes;
       temp3["name"] = ": National"
       temp3["color"] = "rgb(0, 191, 255)"
+      temp3["legendFontColor"] = "#FFFFFF"
+
       ta2.push(temp3);
       temp4["count"] = this.state.u_syndromes;
       temp4["name"] = ": " + username
       temp4["color"] = "rgb(199, 3, 18)"
+      temp4["legendFontColor"] = "#FFFFFF"
+
       ta2.push(temp4)
       this.setState({
         syndromes_data: ta2
@@ -114,10 +123,14 @@ class DashComponent extends React.Component {
       temp5["count"] = this.state.g_pathogens;
       temp5["name"] = ": National"
       temp5["color"] = "rgb(0, 191, 255)"
+      temp5["legendFontColor"] = "#FFFFFF"
+
       ta3.push(temp5);
       temp6["count"] = this.state.u_pathogens;
       temp6["name"] = ": " + username
       temp6["color"] = "rgb(199, 3, 18)"
+      temp6["legendFontColor"] = "#FFFFFF"
+
       ta3.push(temp6)
       this.setState({
         pathogens_data: ta3
@@ -125,10 +138,14 @@ class DashComponent extends React.Component {
       temp7["count"] = this.state.g_problems;
       temp7["name"] = ": National"
       temp7["color"] = "rgb(0, 191, 255)"
+      temp7["legendFontColor"] = "#FFFFFF"
+
       ta4.push(temp7);
       temp8["count"] = this.state.u_problems;
       temp8["name"] = ": " + username
       temp8["color"] = "rgb(199, 3, 18)"
+      temp8["legendFontColor"] = "#FFFFFF"
+
       ta4.push(temp8)
       this.setState({
         problems_data: ta4
@@ -336,71 +353,88 @@ class DashComponent extends React.Component {
       );
     }
     return (
-      <View style={{ paddingTop: 10 }}>
+      <View >
+        <LinearGradient colors={['#c3fdff', '#0083B0']}>
+          <View style={{ marginTop: 30 }}>
 
-        <Text style={styles.headings}> User data / National Data </Text>
-        <Row>
 
-          <ScrollView
-            horizontal={true}
-          >
-            <Card style={{ margin: 10, overflow: 'hidden' }}>
 
-              <Text style={styles.headings}> Antibiotics:  </Text>
-              <PieChart
-                data={this.state.antibiotics_data}
-                width={width - 100}
-                height={200}
-                chartConfig={chartConfig}
-                accessor="count"
-                backgroundColor="transparent"
-                paddingLeft="15"
-                absolute
-              />
-            </Card>
-            <Card style={{ margin: 10, overflow: 'hidden' }}>
+            <Text style={{
+              textAlign: "center",
+              fontFamily: "open-sans-bold", color: "black"
+            }}> User data / National Data </Text>
 
-              <Text style={styles.headings}>Syndromes</Text>
-              <PieChart
-                data={this.state.syndromes_data}
-                width={width - 100}
-                height={200}
-                chartConfig={chartConfig}
-                accessor="count"
-                backgroundColor="transparent"
-                paddingLeft="15"
-                absolute
-              />
-            </Card>
-            <Card style={{ margin: 10, overflow: 'hidden' }}>
 
-              <Text style={styles.headings}>Pathogens</Text>
-              <PieChart
-                data={this.state.pathogens_data}
-                width={width - 100}
-                height={200}
-                chartConfig={chartConfig}
-                accessor="count"
-                backgroundColor="transparent"
-                paddingLeft="15"
-                absolute
-              />
-            </Card>
-            <Card style={{ margin: 10, overflow: 'hidden' }}>
+            <ScrollView
+              horizontal={true}
+            >
+              <Card style={{ margin: 10, overflow: 'hidden' }}>
+                <LinearGradient colors={['#0F2027', '#203A43', '#2C5364']}>
 
-              <Text style={styles.headings}>Problems</Text>
-              <PieChart
-                data={this.state.problems_data}
-                width={width - 100}
-                height={200}
-                chartConfig={chartConfig}
-                accessor="count"
-                backgroundColor="transparent"
-                paddingLeft="15"
-                absolute
-              />
-            </Card>
-          </ScrollView>
+                  <Text style={styles.headings}> Antibiotics:  </Text>
+
+                  <PieChart
+                    data={this.state.antibiotics_data}
+                    width={width - 100}
+                    height={200}
+                    chartConfig={chartConfig}
+                    accessor="count"
+                    backgroundColor="transparent"
+                    paddingLeft="15"
+                    absolute
+                  />
+                </LinearGradient>
+              </Card>
+              <Card style={{ margin: 10, overflow: 'hidden' }}>
+                <LinearGradient colors={['#0F2027', '#203A43', '#2C5364']}>
+
+                  <Text style={styles.headings}>Syndromes</Text>
+                  <PieChart
+                    data={this.state.syndromes_data}
+                    width={width - 100}
+                    height={200}
+                    chartConfig={chartConfig}
+                    accessor="count"
+                    backgroundColor="transparent"
+                    paddingLeft="15"
+                    absolute
+                  />
+                </LinearGradient>
+              </Card>
+              <Card style={{ margin: 10, overflow: 'hidden' }}>
+                <LinearGradient colors={['#0F2027', '#203A43', '#2C5364']}>
+
+                  <Text style={styles.headings}>Pathogens</Text>
+                  <PieChart
+                    data={this.state.pathogens_data}
+                    width={width - 100}
+                    height={200}
+                    chartConfig={chartConfig}
+                    accessor="count"
+                    backgroundColor="transparent"
+                    paddingLeft="15"
+                    absolute
+                  />
+                </LinearGradient>
+              </Card>
+              <Card style={{ margin: 10, overflow: 'hidden' }}>
+                <LinearGradient colors={['#0F2027', '#203A43', '#2C5364']}>
+
+                  <Text style={styles.headings}>Problems</Text>
+                  <PieChart
+                    data={this.state.problems_data}
+                    width={width - 100}
+                    height={200}
+                    chartConfig={chartConfig}
+                    accessor="count"
+                    backgroundColor="transparent"
+                    paddingLeft="15"
+                    absolute
+                  />
+                </LinearGradient>
+              </Card>
+
+            </ScrollView>
 
           {/* <Carousel
             ref={(c) => { this._carousel = c; }}
@@ -411,39 +445,49 @@ class DashComponent extends React.Component {
           /> */}
 
 
-        </Row>
 
 
-        <Row >
-          <View style={{ flexDirection: 'row', fontFamily: 'open-sans-bold'}}>
-            <Col>
-              <Card style={{ margin: 2, width: width / 2 - 10, height: 100, padding: 2, backgroundColor: 'pink' }}>
-                <View style={{ textAlign: 'center', alignItems: 'center', justifyContent: 'center' }}>
-                  <Text>Most Commonly used </Text> 
-                  <Text> Antibiotic</Text>
-                  <Text style={{fontSize: 20}}> {this.state.n_a_c[1]}</Text>
-                  <Text style={{fontSize: 25}}>{this.state.n_a_c[0]}</Text>
-                </View>
-
-              </Card>
-
-            </Col>
 
 
-            <Col >
-              <Card style={{ margin: 2, width: width / 2, height: 100, padding: 2, backgroundColor: 'lightgreen' }}>
-                <View style={{ textAlign: 'center', alignItems: 'center' }}>
-                  <Text>Most Commonly used</Text>
-                  <Text>Antibiotic by you</Text>
-                  <Text style={{fontSize: 20}}> {this.state.u_a_c[1]}</Text>
-                  <Text style={{fontSize: 25}}>{this.state.u_a_c[0]}</Text>
-                </View>
-              </Card>
-            </Col>
+            <View style={{ flexDirection: 'row', fontFamily: 'open-sans-bold' }}>
+              <Col>
+                <Card style={{ margin: 2, width: width / 2 - 10, height: 100, overflow: "hidden" }}>
+                  <LinearGradient colors={['#0F2027', '#203A43', '#2C5364']}>
+
+
+                    <View style={{ textAlign: 'center', alignItems: 'center', justifyContent: 'center' }}>
+                      <Text style={styles.headings}>Most Commonly used </Text>
+                      <Text style={styles.headings}> Antibiotic</Text>
+                      <Text style={{ fontSize: 20, color: "white" }}> {this.state.n_a_c[1]}</Text>
+
+                      <Text style={{ fontSize: 25, color: "white" }}>{this.state.n_a_c[0]}</Text>
+
+                    </View>
+                  </LinearGradient>
+                </Card>
+
+              </Col>
+
+
+              <Col >
+                <Card style={{ margin: 2, width: width / 2, height: 100 }}>
+                  <LinearGradient colors={['#0F2027', '#203A43', '#2C5364']}>
+
+                    <View style={{ textAlign: 'center', alignItems: 'center' }}>
+                      <Text style={styles.headings}>Most Commonly used</Text>
+                      <Text style={styles.headings}>Antibiotic by you</Text>
+                      <Text style={{ fontSize: 20, color: "white" }}> {this.state.u_a_c[1]}</Text>
+                      <Text style={{ fontSize: 25, color: "white" }}>{this.state.u_a_c[0]}</Text>
+                    </View>
+                  </LinearGradient>
+                </Card>
+              </Col>
+            </View>
+
+
+
           </View>
-        </Row>
-
-
+        </LinearGradient>
       </View>
     );
   }
@@ -455,7 +499,9 @@ const styles = StyleSheet.create({
   headings:
   {
     textAlign: "center",
-    fontFamily: "open-sans-bold"
+    fontFamily: "open-sans-bold",
+    color: "white"
+
   },
   screen: {
     flex: 1,

@@ -21,7 +21,7 @@ const Navigator = createStackNavigator(
 );
 
 const switching = createSwitchNavigator({
-  navigator: Navigator,
+  // navigator: Navigator,
   Main: Main,
 });
 
