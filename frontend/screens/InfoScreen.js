@@ -9,7 +9,7 @@ import Card from "../components/card";
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
-
+console.disableYellowBox = true;
 let ok = false;
 
 const list = [

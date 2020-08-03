@@ -9,7 +9,7 @@ import {
   ImageBackground,
 } from "react-native";
 import DashComponent from './DashComponent';
-
+console.disableYellowBox = true;
 
 export default function HomeScreen() {
   return (

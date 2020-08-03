@@ -7,7 +7,7 @@ import * as WebBrowser from "expo-web-browser";
 import Cards from "../components/card"
 import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-
+console.disableYellowBox = true;
 class News2 extends React.Component {
     state = {
         jsonData: [],

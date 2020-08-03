@@ -6,7 +6,7 @@ import { AccordionList, Collapse, CollapseHeader, CollapseBody } from "accordion
 import { Thumbnail, List, ListItem, Separator } from 'native-base';
 import Card from "../components/card"
 import { Entypo } from '@expo/vector-icons';
-
+console.disableYellowBox = true;
 let ok = true
 
 const list = [

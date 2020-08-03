@@ -14,6 +14,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+console.disableYellowBox = true;
 
 import Card from "../components/card";
 export default class Login extends React.Component {

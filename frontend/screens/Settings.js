@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
-
+console.disableYellowBox = true;
 
 export default function Settings() {
   return (
