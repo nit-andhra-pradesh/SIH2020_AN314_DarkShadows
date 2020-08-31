@@ -2,7 +2,7 @@
 
 * **Problem Statement:** Antimicrobial Stewardship Platform
 
-* **Our Solution:** A real time mobile application that will help the user to monitor his antibiotic consumption and management, resulting as an ANtibicrobial Stewardship Platform
+* **Our Solution:** A real time mobile application that will help the user to monitor his antibiotic consumption and management, resulting as an Antimicrobial Stewardship Platform
 
 ![SIH](./docs/assets/SIH.png)
 
